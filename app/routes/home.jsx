@@ -1,3 +1,5 @@
+import Header from "../components/header";
+
 export function meta() {
   return [
     { title: "FeedBack" },
@@ -7,6 +9,6 @@ export function meta() {
 
 export default function Home() {
   return (
-    <div className="bg-[--color-primary] p-4">proměnné tailwind v app.css</div>
+<Header />
   );
 }
