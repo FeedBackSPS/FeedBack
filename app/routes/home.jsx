@@ -1,4 +1,5 @@
 import Header from "../components/header";
+import LoginForm from "../components/loginForm";
 
 export function meta() {
   return [
@@ -9,6 +10,8 @@ export function meta() {
 
 export default function Home() {
   return (
-<Header />
+    <div>
+      <LoginForm />
+    </div>
   );
 }
