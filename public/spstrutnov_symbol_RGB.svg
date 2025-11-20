@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100mm" height="100mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 10000 10000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#FEFEFE}
+    .fil3 {fill:#0A8CCC}
+    .fil1 {fill:#FEFEFE;fill-rule:nonzero}
+    .fil2 {fill:#323C8D;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Vrstva_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="logo_x0020_SPŠ_x0020_Trutnov">
+   <circle id="ochranná_x0020_zóna" class="fil0" cx="5000" cy="5000" r="5000"/>
+   <path class="fil1" d="M514 4651l4010 -1462 1878 -684 0 908 2349 -893c473,712 749,1565 749,2480 0,77 -2,153 -6,229l-4001 1521 -1895 720 0 -968 -2413 879c-434,-691 -685,-1507 -685,-2381 0,-118 5,-234 14,-349z"/>
+   <g id="čáry">
+    <path class="fil2" d="M617 6022l4358 -1588 100 -37 0 107 0 830 4239 -1612c14,48 28,96 41,144l-4329 1645 -100 38 0 -107 0 -832 -4272 1556c-13,-48 -25,-96 -37,-144z"/>
+    <path class="fil2" d="M507 5249l5213 -1899 99 -36 0 106 0 830 3223 -1224c22,44 43,89 63,134l-3334 1268 -101 38 0 -108 0 -832 -5152 1878c-4,-52 -8,-103 -11,-155z"/>
+    <path class="fil2" d="M854 6748l3376 -1230 99 -37 0 107 0 830 5139 -1953c6,50 11,101 16,153l-5203 1977 -101 38 0 -107 0 -832 -3265 1190c-21,-45 -41,-91 -61,-136z"/>
+   </g>
+   <path class="fil3" d="M514 4651l4010 -1462 1878 -684 0 908 2349 -893c-807,-1216 -2188,-2020 -3751,-2020 -2361,0 -4307,1834 -4486,4151z"/>
+   <path class="fil3" d="M9494 5229l-4001 1521 -1895 720 0 -968 -2413 879c797,1271 2210,2119 3815,2119 2401,0 4374,-1898 4494,-4271z"/>
+  </g>
+ </g>
+</svg>
