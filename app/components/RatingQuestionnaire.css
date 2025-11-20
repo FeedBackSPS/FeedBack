@@ -1,0 +1,73 @@
+.rating-container {
+  max-width: 460px;
+  margin: 30px auto;
+  padding: 28px;
+  border-radius: 22px;
+  border: 3px solid #1d3557;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.rating-container h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1d3557;
+}
+
+.question-text {
+  font-size: 18px;
+  margin: 18px 0 12px;
+}
+
+/* Slider */
+.scale-block {
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.scale {
+  width: 100%;
+  accent-color: #1d3557;
+  margin-top: 14px;
+}
+
+/* Bublina s textem hodnoty */
+.scale-label {
+  position: relative;
+  background: #1d3557;
+  width: fit-content;
+  padding: 6px 18px;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+/* Textarea */
+.text-field {
+  width: 100%;
+  background: #E5E5E5;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 16px;
+  min-height: 120px;
+  outline: none;
+  margin-bottom: 30px;
+}
+
+/* Odeslat */
+.submit-btn {
+  background: #1d3557;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  opacity: 0.85;
+}
