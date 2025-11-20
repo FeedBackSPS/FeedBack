@@ -8,7 +8,7 @@ export default function Footer() {
         <p className="items-center justify-center ml-96 pl-96">Ochrana osobních údajů</p>
       </Link>
       <Link to={`/`}>
-        <p>Přístupnost</p>
+        <p className="text-white">Přístupnost</p>
       </Link>
       <nav className="flex gap-2 fixed right-12 justify-center items-center">
         <Link to={`https://www.facebook.com`}>
