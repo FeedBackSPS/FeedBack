@@ -1,4 +1,6 @@
+import Footer from "../components/footer";
 import Header from "../components/header";
+import Main from "../components/main";
 
 export function meta() {
   return [
@@ -9,6 +11,10 @@ export function meta() {
 
 export default function Home() {
   return (
+    <div>
 <Header />
+<Main />
+<Footer />
+</div>
   );
 }
