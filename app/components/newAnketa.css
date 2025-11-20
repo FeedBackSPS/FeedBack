@@ -1,0 +1,104 @@
+/* Kontejner */
+section {
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 28px;
+  border: 3px solid #1d3557;
+  border-radius: 22px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Nadpis */
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1d3557;
+}
+
+/* Nadpisy polí */
+label {
+  font-size: 18px;
+  margin: 10px 0 6px 0;
+  display: block;
+}
+
+/* Textová pole */
+input[type="text"],
+textarea {
+  width: 100%;
+  background: #e5e5e5;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+/* Slider */
+input[type="range"] {
+  width: 100%;
+  margin-top: 6px;
+  accent-color: #1d3557;
+}
+
+/* Hodnota slideru */
+section > div > div {
+  background: #1d3557;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 16px;
+  font-weight: 600;
+  margin: 6px auto 10px auto;
+  width: fit-content;
+}
+
+/* Kontejner možností */
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Inputy možností vedle sebe */
+.options-container input[type="text"] {
+  width: calc(50% - 5px);
+  margin-bottom: 0;
+}
+
+/* Tlačítko přidání další možnosti */
+.options-container button {
+  background: #e5e5e5;
+  width: calc(50% - 5px);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* Hover */
+.options-container button:hover {
+  background: #1d3557;
+  color: white;
+}
+
+/* Odeslat */
+button[type="submit"] {
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  background: #1d3557;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.85;
+}
