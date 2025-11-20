@@ -1,3 +1,5 @@
+import Survey from "./surveys";
+
 export default function Main() {
   return (
     <section>
@@ -8,9 +10,11 @@ export default function Main() {
             FEEDBACK
           </h1>
         </div>
-        <p className="text-black text-2xl font-medium justify-center items-center flex">Podělte se s námi o své poznatky a dojmy</p>
+        <p className="text-black text-2xl font-medium justify-center items-center flex">
+          Podělte se s námi o své poznatky a dojmy
+        </p>
       </div>
-      <article></article>
+      <Survey />
     </section>
   );
 }
