@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./newQuestionnaire.css";
 
-export default function QuestionnaireSection() {
+export default function NewQuestionnaire() {
   return (
     <section className="questionnaire">
       <h1>Nový dotazník</h1>

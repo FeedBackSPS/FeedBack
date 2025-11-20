@@ -1,40 +1,51 @@
 .questionnaire {
-  max-width: 500px;
-  margin: 0 auto;
-  font-family: sans-serif;
+  max-width: 480px;
+  margin: 30px auto;
+  padding: 28px;
+  border: 3px solid #1d3557;
+  border-radius: 22px;
+  font-family: "Inter", sans-serif;
 }
+
+/* Nadpis */
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-}
-h2 {
-  margin: 20px 0 8px 0;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1d3557;
 }
 
+/* Hlavičky sekcí */
+h2 {
+  font-size: 20px;
+  margin: 18px 0 6px 0;
+}
+
+/* Textová pole */
 .text-field {
   width: 100%;
-  background: #e5e5e5;
+  background: #E5E5E5;
   border: none;
-  border-radius: 10px;
-  padding: 14px;
+  border-radius: 12px;
+  padding: 14px 16px;
   font-size: 16px;
   margin-bottom: 20px;
+  outline: none;
 }
 
-/* GRID pro tlačítka */
+/* Rozložení tlačítek typů (grid přes 2 a 3 sloupce) */
 .question-type-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
 
-/* pozicování, aby se vše rozložilo jako na obrázku */
+/* Pozice */
 .top-left {
   grid-column: 1 / 2;
 }
 .top-right {
-  grid-column: 2 / 3;
+  grid-column: 2 / 4; /* táhne se přes dva sloupce */
 }
 .bottom-left {
   grid-column: 1 / 2;
@@ -46,24 +57,26 @@ h2 {
   grid-column: 3 / 4;
 }
 
-/* styl tlačítek */
+/* Tlačítka */
 .type-btn {
-  background: #d3d3d3;
-  padding: 12px;
-  border-radius: 8px;
+  background: #D9D9D9;
+  padding: 16px 10px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  font-size: 16px;
+  text-align: center;
 }
 
-/* MODRÝ HOVER */
+/* Hover modrá */
 .type-btn:hover {
   background: #1d3557;
   color: white;
   transition: 0.2s ease;
 }
 
-/* aktivní tlačítko */
+/* Aktivní tlačítko */
 .type-btn.active {
   background: #1d3557;
   color: white;
