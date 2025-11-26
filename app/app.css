@@ -7,6 +7,11 @@
   --color-primary: #ff0000;
 }
 
+.custom-gradient {
+  @apply bg-gradient-to-r;
+  background: linear-gradient(182.35deg, #223974 1.97%, #374e88 98.03%);
+}
+
 @media (prefers-color-scheme: dark) {
   /*dark mode*/
   :root {
@@ -16,7 +21,7 @@
 
 html,
 body {
-  @apply bg-white;
+  @apply bg-white dark:bg-gray-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;

@@ -1,3 +1,4 @@
+import { requireUserSession } from "../api/auth";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Main from "../components/main";
@@ -9,12 +10,17 @@ export function meta() {
   ];
 }
 
+export async function loader({ request }) {
+  await requireUserSession(request);
+  return null;
+}
+
 export default function Home() {
   return (
     <div>
-<Header />
-<Main />
-<Footer />
-</div>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
   );
 }
