@@ -3,11 +3,11 @@ import { Form, useActionData } from "react-router";
 export default function LoginForm() {
   const actionData = useActionData();
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5] ">
       <Form
         action="/login"
         method="post"
-        className="bg-[#F5F5F5] p-10 rounded shadow-md  flex flex-col gap-4 "
+        className=" p-10 rounded shadow-md  flex flex-col gap-4 "
       >
         {/* Logo + název */}
         <div className=" flex flex-row text-center mx-auto mt-4 mb-4">
@@ -24,7 +24,7 @@ export default function LoginForm() {
           </h3>
         </div>
 
-        <div className="bg-white p-10 min-w-48 relative">
+        <div className="bg-white p-10 min-w-48 relative shadow-md">
           <div className="absolute right-[4%] top-[3%] bg-[#00A2E2] h-6 w-6 rounded-full flex items-center justify-center ">
             <span className="text-white text-xs">i</span>
           </div>

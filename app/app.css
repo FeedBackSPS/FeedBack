@@ -12,6 +12,11 @@
   background: linear-gradient(182.35deg, #223974 1.97%, #374e88 98.03%);
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @media (prefers-color-scheme: dark) {
   /*dark mode*/
   :root {

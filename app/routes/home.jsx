@@ -17,7 +17,7 @@ export async function loader({ request }) {
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-[#F5F5F5] min-h-screen">
       <Header />
       <Main />
       <Footer />
