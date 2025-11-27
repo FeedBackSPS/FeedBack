@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
+import OpenedQuestionnaire from "./openedQuestionnaire";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -93,6 +94,7 @@ export default function Main() {
                 <Questionnaire
                   data={data}
                   key={index}
+                  type={data.type}
                   onOpen={() => setOpenQuestionnaire(data)}
                 />
               ) : null}
@@ -123,6 +125,7 @@ export default function Main() {
                 <Questionnaire
                   data={data}
                   key={index}
+                  type={data.type}
                   onOpen={() => setOpenQuestionnaire(data)}
                 />
               ) : null}
@@ -130,25 +133,10 @@ export default function Main() {
           ))}
         </article>
       </section>
-      {openQuestionnaire && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center ">
-          <div
-            className="absolute top-0 left-0 h-screen w-screen "
-            onClick={() => setOpenQuestionnaire(null)}
-          ></div>
-          <div className="bg-white p-6 rounded-xl absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center">
-            <h2>{openQuestionnaire.title}</h2>
-            <p>{openQuestionnaire.author}</p>
-            {/* whatever else you want */}
-            <button
-              className="px-8 py-4 rounded-xl text-white  bg-red-500 cursor-pointer"
-              onClick={() => setOpenQuestionnaire(null)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <OpenedQuestionnaire
+        questionnaire={openQuestionnaire}
+        onClose={() => setOpenQuestionnaire(null)}
+      />
     </main>
   );
 }
