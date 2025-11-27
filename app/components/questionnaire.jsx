@@ -1,4 +1,4 @@
-export default function Questionnaire({ data }) {
+export default function Questionnaire({ data, onOpen }) {
   const isActive = data.isActive;
   const isActiveColor = data.isActive ? "bg-green-500" : "bg-red-500";
 
@@ -11,7 +11,10 @@ export default function Questionnaire({ data }) {
   return (
     <div>
       {isActive ? (
-        <article className="flex flex-row justify-between items-center bg-[#F4F4F4] px-10 gap-8 p-4 border-b-4 border-b-[#374E88]">
+        <article
+          className="flex flex-row justify-between items-center bg-[#F4F4F4] px-10 gap-8 p-4 border-b-4 border-b-[#374E88] cursor-pointer"
+          onClick={isActive ? onOpen : undefined}
+        >
           <h4 className="text-lg font-semibold max-w-[60%]">{data.title}</h4>
           <ul className="flex flex-col text-right gap-2">
             <li>{data.author}</li>

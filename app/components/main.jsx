@@ -4,6 +4,7 @@ import Questionnaire from "./questionnaire";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [openQuestionnaire, setOpenQuestionnaire] = useState(null);
 
   const article1Dropdowns = [
     { id: "a1-stari", title: "Stáří", items: ["0-10", "11-20", "21+"] },
@@ -55,7 +56,7 @@ export default function Main() {
   ];
 
   return (
-    <main className="">
+    <main className=" ">
       <div>
         <div className="flex justify-center items-center gap-2 mt-20 mb-4">
           <img className="w-12" src="spstrutnov_symbol_RGB.svg" alt="logo" />
@@ -89,7 +90,11 @@ export default function Main() {
           {questionnaires.map((data, index) => (
             <div key={index}>
               {data.type === "anketa" ? (
-                <Questionnaire data={data} key={index} />
+                <Questionnaire
+                  data={data}
+                  key={index}
+                  onOpen={() => setOpenQuestionnaire(data)}
+                />
               ) : null}
             </div>
           ))}
@@ -115,12 +120,35 @@ export default function Main() {
           {questionnaires.map((data, index) => (
             <div key={index}>
               {data.type === "dotaznik" ? (
-                <Questionnaire data={data} key={index} />
+                <Questionnaire
+                  data={data}
+                  key={index}
+                  onOpen={() => setOpenQuestionnaire(data)}
+                />
               ) : null}
             </div>
           ))}
         </article>
       </section>
+      {openQuestionnaire && (
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center ">
+          <div
+            className="absolute top-0 left-0 h-screen w-screen "
+            onClick={() => setOpenQuestionnaire(null)}
+          ></div>
+          <div className="bg-white p-6 rounded-xl absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center">
+            <h2>{openQuestionnaire.title}</h2>
+            <p>{openQuestionnaire.author}</p>
+            {/* whatever else you want */}
+            <button
+              className="px-8 py-4 rounded-xl text-white  bg-red-500 cursor-pointer"
+              onClick={() => setOpenQuestionnaire(null)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
