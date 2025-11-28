@@ -32,6 +32,21 @@ export default function Main() {
       createdAt: "2024-01-15",
       isActive: true,
       type: "anketa",
+      questions: [
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 5,
+        },
+        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+      ],
     },
     {
       title: "Hodnocení školních služeb",
@@ -39,6 +54,15 @@ export default function Main() {
       createdAt: "2024-02-10",
       isActive: false,
       type: "dotaznik",
+      questions: [
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
+        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+      ],
     },
     {
       title: "Hodnocení školních služeb",
@@ -46,6 +70,15 @@ export default function Main() {
       createdAt: "2024-02-10",
       isActive: false,
       type: "anketa",
+      questions: [
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
+        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+      ],
     },
     {
       title: "Hodnocení školních služeb",
@@ -53,6 +86,15 @@ export default function Main() {
       createdAt: "2024-02-10",
       isActive: true,
       type: "dotaznik",
+      questions: [
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
+        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+      ],
     },
   ];
 
