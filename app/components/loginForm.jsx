@@ -34,7 +34,7 @@ export default function LoginForm() {
               type="text"
               name="username"
               id="username"
-              placeholder="Uživatelské jméno"
+              placeholder="Uživatelské jméno test"
               className="border rounded p-1 border-[#C7D4F4] text-[#0031ac] "
               required
             />
@@ -46,7 +46,7 @@ export default function LoginForm() {
               type="password"
               name="password"
               id="password"
-              placeholder="Heslo"
+              placeholder="Heslo test"
               className="border rounded p-1 border-[#C7D4F4] "
               required
             />
