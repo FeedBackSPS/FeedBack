@@ -32,7 +32,7 @@ export default function Dropdown({
       </button>
 
       <ul
-        className={`absolute left-0 mt-2 w-40 bg-white shadow-md rounded-md transition-all duration-200
+        className={`absolute left-0 mt-2 w-40 text-black bg-white shadow-md rounded-md transition-all duration-200
           ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}
           md:group-hover:opacity-100 md:group-hover:visible
         `}
