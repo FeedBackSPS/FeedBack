@@ -8,7 +8,7 @@ export default function Main() {
   const [openQuestionnaire, setOpenQuestionnaire] = useState(null);
 
   const article1Dropdowns = [
-    { id: "a1-stari", title: "Stáří", items: ["0-10", "11-20", "21+"] },
+    { id: "a1-stari", title: "Stáří", items: ["Vzestupně", "Sestupně"] },
     {
       id: "a1-dulezitost",
       title: "Důležitost",

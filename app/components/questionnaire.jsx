@@ -15,7 +15,9 @@ export default function Questionnaire({ data, onOpen }) {
           className="flex flex-row justify-between items-center bg-[#F4F4F4] px-10 gap-8 p-4 border-b-4 border-b-[#374E88] cursor-pointer"
           onClick={isActive ? onOpen : undefined}
         >
-          <h4 className="text-lg text-black font-semibold max-w-[60%]">{data.title}</h4>
+          <h4 className="text-lg text-black font-semibold max-w-[60%]">
+            {data.title}
+          </h4>
           <ul className="flex flex-col text-right gap-2">
             <li className="text-black">{data.author}</li>
             <li className={`${isActiveColor} w-5 h-5 ml-auto rounded-md`}></li>
@@ -23,7 +25,7 @@ export default function Questionnaire({ data, onOpen }) {
           </ul>
         </article>
       ) : (
-        <article className="flex flex-row justify-between items-center px-10 gap-8 p-4 border-b-4 border-b-[#374E88] bg-[#E5E5E5] cursor-not-allowed select-none text-black/50">
+        <article className="flex flex-row justify-between items-center px-10 gap-8 p-4 border-b-4 border-b-[#374E88] bg-[#E5E5E5]  select-none text-black/50">
           <h4 className="text-lg font-semibold max-w-[60%]">{data.title}</h4>
 
           <ul className="flex flex-col text-right gap-2">
