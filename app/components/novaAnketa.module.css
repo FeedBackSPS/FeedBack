@@ -1,28 +1,27 @@
+/* Globální proměnné fungují i v modulech, ale musí být definovány :root nebo importovány */
 :root {
-  /* Barvy přesněji podle screenshotu */
-  --primary-blue: #3b4b80; /* Tmavě modrá z borderu a tlačítka */
-  --bg-modal: #f4f4f6;     /* Světle šedý/modrý podklad modálu */
-  --bg-input: #dcdcdc;     /* Šedá pro inputy */
+  --primary-blue: #3b4b80;
+  --bg-modal: #f4f4f6;
+  --bg-input: #dcdcdc;
   --text-dark: #111;
-  --placeholder-color: #555;
 }
 
-.modal-overlay {
+.modalOverlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8); /* Světlejší overlay jako na screenu */
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
 
-.modal-content {
+.modalContent {
   background-color: var(--bg-modal);
   padding: 40px;
-  border-radius: 25px; /* Větší zaoblení rohů */
+  border-radius: 25px;
   border: 3px solid var(--primary-blue);
-  width: 420px; /* Fixní šířka, aby to sedělo k poměru stran */
+  width: 420px;
   font-family: 'Segoe UI', Roboto, sans-serif;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   display: flex;
@@ -39,7 +38,7 @@
   letter-spacing: 0.5px;
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 18px;
 }
 
@@ -51,37 +50,36 @@
   color: #000;
 }
 
-/* Styly pro Inputy a Textareu */
-.input-style, .textarea-style {
+/* Inputy a Textarea */
+.inputStyle, .textareaStyle {
   width: 100%;
   padding: 12px 15px;
   font-size: 15px;
   color: #333;
   background-color: var(--bg-input);
-  border-radius: 6px; /* Menší radius u inputů */
+  border-radius: 6px;
   border: none;
   box-sizing: border-box;
   outline: none;
   font-weight: 500;
 }
 
-/* Specifické pro placeholder - kurzíva a tmavší šedá */
-.input-style::placeholder, 
-.textarea-style::placeholder {
+.inputStyle::placeholder, 
+.textareaStyle::placeholder {
   color: #4a4a4a;
   font-style: italic;
   letter-spacing: 1px;
   font-weight: 600;
 }
 
-.textarea-style {
+.textareaStyle {
   min-height: 70px;
-  resize: none; /* Zákaz změny velikosti */
+  resize: none;
   font-family: inherit;
 }
 
-/* --- CUSTOM SLIDER (Důležitost) --- */
-.range-container {
+/* --- CUSTOM SLIDER --- */
+.rangeContainer {
   position: relative;
   height: 30px;
   display: flex;
@@ -89,8 +87,7 @@
   margin-top: 5px;
 }
 
-/* Track (kolejnice) */
-.range-track-bg {
+.rangeTrackBg {
   position: absolute;
   width: 100%;
   height: 8px;
@@ -100,19 +97,17 @@
   transform: translateY(-50%);
 }
 
-/* Skutečný input (neviditelný, ale funkční) */
-.range-input {
+.rangeInput {
   position: absolute;
   width: 100%;
-  opacity: 0; /* Skryjeme ho, abychom viděli náš custom thumb */
+  opacity: 0;
   cursor: pointer;
-  height: 30px; /* Musí být vysoký, aby se na něj dalo kliknout */
+  height: 30px;
   z-index: 2;
   margin: 0;
 }
 
-/* Náš custom "Thumb" (modrá pilulka s číslem) */
-.range-thumb-custom {
+.rangeThumbCustom {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -126,21 +121,20 @@
   justify-content: center;
   font-weight: bold;
   font-size: 14px;
-  pointer-events: none; /* Aby kliknutí procházelo na input pod tím */
+  pointer-events: none;
   z-index: 1;
-  transition: left 0.1s ease-out; /* Hladší pohyb */
+  transition: left 0.1s ease-out;
 }
 
 /* --- MOŽNOSTI GRID --- */
-.options-grid {
+.optionsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dva sloupce */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 0;
 }
 
-/* Tlačítko "další možnost" vypadající jako input */
-.add-option-btn {
+.addOptionBtn {
   width: 100%;
   padding: 12px 15px;
   background-color: var(--bg-input);
@@ -151,22 +145,22 @@
   font-style: italic;
   cursor: pointer;
   font-size: 14px;
-  text-align: left; /* Zarovnání textu doleva jako placeholder */
+  text-align: left;
   letter-spacing: 0.5px;
 }
 
-.add-option-btn:hover {
+.addOptionBtn:hover {
   background-color: #cfcfcf;
 }
 
-/* --- TLAČÍTKO ODESLAT --- */
-.footer-actions {
+/* --- FOOTER --- */
+.footerActions {
   display: flex;
-  justify-content: flex-end; /* Zarovnání doprava */
+  justify-content: flex-end;
   margin-top: 25px;
 }
 
-.submit-btn {
+.submitBtn {
   background-color: var(--primary-blue);
   color: white;
   border: none;
@@ -178,6 +172,6 @@
   transition: opacity 0.2s;
 }
 
-.submit-btn:hover {
+.submitBtn:hover {
   opacity: 0.9;
 }

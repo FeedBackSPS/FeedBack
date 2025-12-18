@@ -1,19 +1,18 @@
 import { useState } from "react";
-import "./NovaAnketa.css";
+// Důležité: importujeme objekt 'styles' z modulu
+import styles from "./novaAnketa.module.css";
 
 export default function NovaAnketa() {
   const [importance, setImportance] = useState(4);
   const min = 1;
   const max = 10;
 
-  // Placeholder texty pro možnosti, aby to vypadalo přesně jako na obrázku
   const [options, setOptions] = useState([
     { id: 1, placeholder: "xxxxxxx" },
     { id: 2, placeholder: "xxxxxxx" }
   ]);
 
   const addOption = () => {
-    // Nová možnost se přidá do pole
     setOptions([...options, { id: Date.now(), placeholder: "nová možnost" }]);
   };
 
@@ -22,45 +21,39 @@ export default function NovaAnketa() {
     console.log("Odesláno");
   };
 
-  // Výpočet procentuální pozice pro modrý slider (aby jezdil přesně)
-  // Vzoreček zajišťuje, že střed "pilulky" sedí přesně na hodnotě
   const percentage = ((importance - min) * 100) / (max - min);
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <h2 className="title">Nová anketa</h2>
+    // Používáme styles.nazevTridy místo stringu "nazev-tridy"
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <h2 className={styles.title}>Nová anketa</h2>
 
         <form onSubmit={handleSubmit}>
           
-          {/* Název */}
-          <div className="form-group">
-            <label htmlFor="nazev" className="label">Název</label>
+          <div className={styles.formGroup}>
+            <label htmlFor="nazev" className={styles.label}>Název</label>
             <input 
               type="text" 
               id="nazev" 
               name="title" 
-              className="input-style" 
+              className={styles.inputStyle} 
               placeholder="xxxxxxxxxxxxx" 
             />
           </div>
 
-          {/* Důležitost - Custom Slider */}
-          <div className="form-group">
-            <label htmlFor="dulezitost" className="label">Důležitost</label>
-            <div className="range-container">
-              {/* Šedá čára na pozadí */}
-              <div className="range-track-bg"></div>
+          <div className={styles.formGroup}>
+            <label htmlFor="dulezitost" className={styles.label}>Důležitost</label>
+            <div className={styles.rangeContainer}>
+              <div className={styles.rangeTrackBg}></div>
               
-              {/* Modrá pilulka s číslem (vizuální reprezentace) */}
               <div 
-                className="range-thumb-custom"
+                className={styles.rangeThumbCustom}
                 style={{ left: `${percentage}%` }}
               >
                 {importance}
               </div>
 
-              {/* Skutečný (neviditelný) input pro ovládání */}
               <input 
                 type="range" 
                 id="dulezitost" 
@@ -69,51 +62,46 @@ export default function NovaAnketa() {
                 max={max} 
                 value={importance}
                 onChange={(e) => setImportance(Number(e.target.value))}
-                className="range-input"
+                className={styles.rangeInput}
               />
             </div>
           </div>
 
-          {/* Popis */}
-          <div className="form-group">
-            <label htmlFor="popis" className="label">Popis</label>
+          <div className={styles.formGroup}>
+            <label htmlFor="popis" className={styles.label}>Popis</label>
             <textarea 
               id="popis" 
               name="description" 
-              className="textarea-style" 
+              className={styles.textareaStyle} 
               placeholder="xxxxxxxxxxxxx" 
             />
           </div>
 
-          {/* Možnosti */}
-          <div className="form-group">
-            <label className="label">Možnosti</label>
-            <div className="options-grid">
-              {/* Renderování inputů */}
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Možnosti</label>
+            <div className={styles.optionsGrid}>
               {options.map((opt) => (
                 <input 
                   key={opt.id}
                   type="text" 
                   name="options[]" 
-                  className="input-style" 
+                  className={styles.inputStyle} 
                   placeholder={opt.placeholder} 
                 />
               ))}
               
-              {/* Tlačítko "další možnost" uvnitř gridu jako na obrázku */}
               <button 
                 type="button" 
                 onClick={addOption} 
-                className="add-option-btn"
+                className={styles.addOptionBtn}
               >
                 další možnost
               </button>
             </div>
           </div>
 
-          {/* Tlačítko Odeslat vpravo dole */}
-          <div className="footer-actions">
-            <button type="submit" className="submit-btn">
+          <div className={styles.footerActions}>
+            <button type="submit" className={styles.submitBtn}>
               Odeslat
             </button>
           </div>
