@@ -1,0 +1,183 @@
+:root {
+  /* Barvy přesněji podle screenshotu */
+  --primary-blue: #3b4b80; /* Tmavě modrá z borderu a tlačítka */
+  --bg-modal: #f4f4f6;     /* Světle šedý/modrý podklad modálu */
+  --bg-input: #dcdcdc;     /* Šedá pro inputy */
+  --text-dark: #111;
+  --placeholder-color: #555;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Světlejší overlay jako na screenu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--bg-modal);
+  padding: 40px;
+  border-radius: 25px; /* Větší zaoblení rohů */
+  border: 3px solid var(--primary-blue);
+  width: 420px; /* Fixní šířka, aby to sedělo k poměru stran */
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Styly pro Inputy a Textareu */
+.input-style, .textarea-style {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  color: #333;
+  background-color: var(--bg-input);
+  border-radius: 6px; /* Menší radius u inputů */
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  font-weight: 500;
+}
+
+/* Specifické pro placeholder - kurzíva a tmavší šedá */
+.input-style::placeholder, 
+.textarea-style::placeholder {
+  color: #4a4a4a;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.textarea-style {
+  min-height: 70px;
+  resize: none; /* Zákaz změny velikosti */
+  font-family: inherit;
+}
+
+/* --- CUSTOM SLIDER (Důležitost) --- */
+.range-container {
+  position: relative;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Track (kolejnice) */
+.range-track-bg {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-input);
+  border-radius: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Skutečný input (neviditelný, ale funkční) */
+.range-input {
+  position: absolute;
+  width: 100%;
+  opacity: 0; /* Skryjeme ho, abychom viděli náš custom thumb */
+  cursor: pointer;
+  height: 30px; /* Musí být vysoký, aby se na něj dalo kliknout */
+  z-index: 2;
+  margin: 0;
+}
+
+/* Náš custom "Thumb" (modrá pilulka s číslem) */
+.range-thumb-custom {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-blue);
+  color: white;
+  width: 40px;
+  height: 22px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  pointer-events: none; /* Aby kliknutí procházelo na input pod tím */
+  z-index: 1;
+  transition: left 0.1s ease-out; /* Hladší pohyb */
+}
+
+/* --- MOŽNOSTI GRID --- */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dva sloupce */
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+/* Tlačítko "další možnost" vypadající jako input */
+.add-option-btn {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: var(--bg-input);
+  border: none;
+  border-radius: 6px;
+  color: #4a4a4a;
+  font-weight: 600;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left; /* Zarovnání textu doleva jako placeholder */
+  letter-spacing: 0.5px;
+}
+
+.add-option-btn:hover {
+  background-color: #cfcfcf;
+}
+
+/* --- TLAČÍTKO ODESLAT --- */
+.footer-actions {
+  display: flex;
+  justify-content: flex-end; /* Zarovnání doprava */
+  margin-top: 25px;
+}
+
+.submit-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
