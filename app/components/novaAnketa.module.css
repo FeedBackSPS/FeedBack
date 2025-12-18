@@ -1,0 +1,177 @@
+/* Globální proměnné fungují i v modulech, ale musí být definovány :root nebo importovány */
+:root {
+  --primary-blue: #3b4b80;
+  --bg-modal: #f4f4f6;
+  --bg-input: #dcdcdc;
+  --text-dark: #111;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: var(--bg-modal);
+  padding: 40px;
+  border-radius: 25px;
+  border: 3px solid var(--primary-blue);
+  width: 420px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.formGroup {
+  margin-bottom: 18px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Inputy a Textarea */
+.inputStyle, .textareaStyle {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  color: #333;
+  background-color: var(--bg-input);
+  border-radius: 6px;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  font-weight: 500;
+}
+
+.inputStyle::placeholder, 
+.textareaStyle::placeholder {
+  color: #4a4a4a;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.textareaStyle {
+  min-height: 70px;
+  resize: none;
+  font-family: inherit;
+}
+
+/* --- CUSTOM SLIDER --- */
+.rangeContainer {
+  position: relative;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.rangeTrackBg {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-input);
+  border-radius: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rangeInput {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  height: 30px;
+  z-index: 2;
+  margin: 0;
+}
+
+.rangeThumbCustom {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-blue);
+  color: white;
+  width: 40px;
+  height: 22px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 1;
+  transition: left 0.1s ease-out;
+}
+
+/* --- MOŽNOSTI GRID --- */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.addOptionBtn {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: var(--bg-input);
+  border: none;
+  border-radius: 6px;
+  color: #4a4a4a;
+  font-weight: 600;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.addOptionBtn:hover {
+  background-color: #cfcfcf;
+}
+
+/* --- FOOTER --- */
+.footerActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.submitBtn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
