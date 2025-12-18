@@ -9,6 +9,10 @@ export default function Main({ questionnaires }) {
 
   console.log(questionnaires, "questionnaires v main");
 
+  questionnaires[0].questions = JSON.parse(questionnaires[0].questions);
+
+  console.dir(questionnaires, { depth: null, colors: true });
+
   const article1Dropdowns = [
     { id: "a1-stari", title: "Stáří", items: ["0-10", "11-20", "21+"] },
     {
