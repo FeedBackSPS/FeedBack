@@ -1,6 +1,6 @@
 import { sql } from "./sql";
 import bcrypt from "bcryptjs";
-import { createCookieSessionStorage, redirect } from "@remix-run/node";
+import { createCookieSessionStorage, redirect } from "react-router";
 
 const sessionSecret = "default_secret";
 export const storage = createCookieSessionStorage({
@@ -30,13 +30,44 @@ export async function getCurrentUser(request) {
 
   return result[0] || null; // Vrací uživatele nebo null, pokud neexistuje
 }
-export async function createUserSession(username, redirectTo) {
+export async function createUserSession(
+  userId,
+  username,
+  redirectTo,
+  remember
+) {
   const session = await storage.getSession();
-  session.set("userId", username);
-  session.set("username", username); // Uložení username do session
+  session.set("userId", userId);
+  session.set("username", username);
+  session.set("remember", remember);
+
   return redirect(redirectTo, {
     headers: {
-      "Set-Cookie": await storage.commitSession(session),
+      "Set-Cookie": await storage.commitSession(session, {
+        maxAge: remember ? 60 * 60 * 24 * 7 : undefined,
+        // 7 days OR session cookie
+      }),
+    },
+  });
+}
+export async function requireUserSession(request) {
+  const session = await getSession(request);
+  if (!session.has("userId")) {
+    throw redirect("/login");
+  }
+  return session;
+}
+
+export async function checkPassword(input) {
+  const correct = "test"; // TEMP
+  return input === correct;
+}
+
+export async function destroyUserSession(request) {
+  const session = await getSession(request);
+  return redirect("/login", {
+    headers: {
+      "Set-Cookie": await storage.destroySession(session),
     },
   });
 }

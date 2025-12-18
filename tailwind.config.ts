@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         lightBlue: "#374E88",
-        deepBlue: '#223974'
+        deepBlue: "#223974",
       },
       fontFamily: {
         sans: [
