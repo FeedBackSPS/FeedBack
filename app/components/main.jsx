@@ -9,7 +9,12 @@ export default function Main({ questionnaires }) {
 
   console.log(questionnaires, "questionnaires v main");
 
-  questionnaires[0].questions = JSON.parse(questionnaires[0].questions);
+  // questionnaires[0].questions = JSON.parse(questionnaires[0].questions);
+  questionnaires.forEach((q) => {
+    if (typeof q.questions === "string") {
+      q.questions = JSON.parse(q.questions);
+    }
+  });
 
   console.dir(questionnaires, { depth: null, colors: true });
 
