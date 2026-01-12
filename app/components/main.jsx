@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
+import NewQuestionnaire from "./newQuestionnaire";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -100,6 +101,7 @@ export default function Main() {
 
   return (
     <main className=" ">
+      <NewQuestionnaire />
       <div>
         <div className="flex justify-center items-center gap-2 mt-20 mb-4">
           <img className="w-12" src="spstrutnov_symbol_RGB.svg" alt="logo" />
