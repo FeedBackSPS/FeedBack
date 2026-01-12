@@ -21,8 +21,8 @@ export default function OpenedQuestionnaire({ onClose, questionnaire }) {
             </label>
             <input
               type="range"
-              id={`${index}`}
-              name={`${index}`}
+              id={`q${index}`}
+              name={`q${index}`}
               min={question.min || 0}
               max={question.max || 5}
               className="border border-gray-300 rounded-md "
@@ -105,6 +105,7 @@ export default function OpenedQuestionnaire({ onClose, questionnaire }) {
           Odeslat
         </button>
       </article>
+      <input type="number" hidden name="questionCount" />
     </Form>
   );
 }

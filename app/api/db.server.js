@@ -10,3 +10,5 @@ export function getData() {
   const result = sql(`SELECT * from Questionnaires`);
   return result;
 }
+
+export function sendAnswersToDB(answers) {}
