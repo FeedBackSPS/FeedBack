@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
+import NovaAnketa from "./novaAnketa";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -128,6 +129,9 @@ export default function Main() {
                   setOpenDropdown={setOpenDropdown}
                 />
               ))}
+              <div>
+                <NovaAnketa />
+              </div>
             </div>
           </header>
           {questionnaires.map((data, index) => (

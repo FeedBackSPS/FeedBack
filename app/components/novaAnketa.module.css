@@ -175,3 +175,86 @@
 .submitBtn:hover {
   opacity: 0.9;
 }
+/* Globální proměnné a zbytek CSS zůstává stejný, upravujeme/přidáváme jen toto: */
+
+/* ... (předchozí styly nechat) ... */
+
+.modalContent {
+  /* Změna: max-height aby se dalo scrollovat, pokud bude hodně sekcí */
+  max-height: 90vh; 
+  overflow-y: auto;
+  /* ... zbytek stejný ... */
+  background-color: var(--bg-modal);
+  padding: 40px;
+  border-radius: 25px;
+  border: 3px solid var(--primary-blue);
+  width: 420px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nové: Oddělovač */
+.divider {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0 20px 0;
+}
+
+.sectionDivider {
+  border: 0;
+  border-top: 2px dashed #dcdcdc;
+  margin: 25px 0;
+}
+
+.sectionTitle {
+  margin: 0 0 10px 0;
+  color: var(--primary-blue);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- FOOTER UPRAVENÝ --- */
+.footerActions {
+  display: flex;
+  /* Změna: roztáhne tlačítka od sebe (Přidat vlevo, Odeslat vpravo) */
+  justify-content: space-between; 
+  margin-top: 25px;
+  gap: 15px; /* Mezera pro jistotu */
+}
+
+/* Styl pro nové tlačítko PŘIDAT */
+.addBtn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.addBtn:hover {
+  opacity: 0.9;
+}
+
+.submitBtn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
