@@ -13,7 +13,7 @@ export default function Questionnaire({ data, onOpen }) {
       {isActive ? (
         <article
           className="flex flex-row justify-between items-center bg-[#F4F4F4] px-10 gap-8 p-4 border-b-4 border-b-[#374E88] cursor-pointer"
-          onClick={isActive ? onOpen : undefined}
+          onClick={onOpen}
         >
           <h4 className="text-lg font-semibold max-w-[60%]">{data.title}</h4>
           <ul className="flex flex-col text-right gap-2">

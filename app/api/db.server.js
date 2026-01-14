@@ -10,5 +10,8 @@ export function getData() {
   const result = sql(`SELECT * from Questionnaires`);
   return result;
 }
-
-export function sendAnswersToDB(answers) {}
+export async function sendAnswersToDB(answers) {
+  const result = answers;
+  console.log("Answers to be sent to DB:", answers);
+  return result;
+}
