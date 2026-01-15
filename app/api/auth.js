@@ -71,3 +71,9 @@ export async function destroyUserSession(request) {
     },
   });
 }
+
+export async function sendAnswersToDB(answers) {
+  const result = answers;
+  console.log("Answers to be sent to DB:", answers);
+  return result;
+}
