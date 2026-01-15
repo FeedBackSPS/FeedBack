@@ -3,6 +3,7 @@ import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
 import NovaAnketa from "./novaAnketa";
+import NewQuestionnaire from "./newQuestionnaire";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -10,6 +11,7 @@ export default function Main() {
 
   // Stav pro otevření/zavření modálního okna
   const [showNovaAnketa, setShowNovaAnketa] = useState(false);
+  const [showNewQuestionnaire, setShowNewQuestionnaire] = useState(false);
 
   const article1Dropdowns = [
     { id: "a1-stari", title: "Stáří", items: ["0-10", "11-20", "21+"] },
@@ -183,7 +185,7 @@ export default function Main() {
 
               <button
                 className="bg-white text-gray-500 hover:text-[#374E88] font-bold py-1.5 px-5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm whitespace-nowrap"
-                onClick={() => console.log("Nový dotazník kliknuto")}
+                onClick={() => setShowNewQuestionnaire(true)}
               >
                 Nový dotazník +
               </button>
@@ -222,6 +224,23 @@ export default function Main() {
             className="w-full max-w-lg p-4 rounded-2xl transform transition-all"
           >
             <NovaAnketa />
+          </div>
+        </div>
+      )}
+      {/* --- MODÁLNÍ OKNO PRO NOVOU ANKETU --- */}
+      {showNewQuestionnaire && (
+        <div
+          // 1. Tady říkáme: Když klikneš na toto šedé pozadí, nastav stav na false (zavři to)
+          className="fixed inset-0 bg-black/50 z-[100] flex justify-center items-center backdrop-blur-sm"
+          onClick={() => setShowNewQuestionnaire(false)}
+        >
+          {/* 2. Tady je důležité stopPropagation: Když klikneš DOVNITŘ okna, akce se zastaví a neprobublá nahoru */}
+          {/* PŘIDÁNY TŘÍDY: w-full (plná šířka), max-w-lg (maximální šířka), p-4 (vnitřní odsazení), rounded-2xl (zaoblené rohy) */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-lg p-4 rounded-2xl transform transition-all"
+          >
+            <NewQuestionnaire />
           </div>
         </div>
       )}

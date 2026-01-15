@@ -55,7 +55,7 @@ export default function NewQuestionnaire() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center ">
       <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md border-2 border-blue-900">
         <h2 className="text-3xl font-bold text-blue-900 text-center mb-6">
           Nový dotazník
