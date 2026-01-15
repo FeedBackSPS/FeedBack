@@ -1,5 +1,4 @@
 import { useState } from "react";
-// Důležité: importujeme objekt 'styles' z modulu
 import styles from "./novaAnketa.module.css";
 
 export default function NovaAnketa() {
@@ -7,8 +6,6 @@ export default function NovaAnketa() {
   const min = 1;
   const max = 10;
 
-  // Místo prostého pole options nyní máme pole sekcí.
-  // Každá sekce má své ID a seznam svých možností.
   const [sections, setSections] = useState([
     {
       id: 1,
@@ -19,7 +16,6 @@ export default function NovaAnketa() {
     }
   ]);
 
-  // Funkce pro přidání celé nové sekce (Popis + Možnosti)
   const handleAddSection = () => {
     const newSection = {
       id: Date.now(),
@@ -31,7 +27,6 @@ export default function NovaAnketa() {
     setSections([...sections, newSection]);
   };
 
-  // Funkce pro přidání možnosti do KONKRÉTNÍ sekce
   const handleAddOption = (sectionId) => {
     setSections((prevSections) =>
       prevSections.map((sec) => {
@@ -57,14 +52,23 @@ export default function NovaAnketa() {
   const percentage = ((importance - min) * 100) / (max - min);
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+    // 1. Hlavní obal karty
+    <div className={styles.container}>
+      
+      {/* Hlavička */}
+      <div className={styles.header}>
         <h2 className={styles.title}>Nová anketa</h2>
       </div>
 
-        <form onSubmit={handleSubmit}>
+      {/* 2. Formulář uvnitř karty */}
+      <form 
+        onSubmit={handleSubmit} 
+        style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}
+      >
+        
+        {/* 3. Scrollovatelný obsah */}
+        <div className={styles.scrollableContent}>
           
-          {/* --- GLOBÁLNÍ ČÁST (Název a Důležitost jsou společné) --- */}
           <div className={styles.formGroup}>
             <label htmlFor="nazev" className={styles.label}>Název</label>
             <input 
@@ -76,27 +80,23 @@ export default function NovaAnketa() {
             />
           </div>
 
-          {/* Důležitost */}
-            <div className={styles.formGroup}>
-              <label htmlFor="dulezitost" className={styles.label}>Důležitost</label>
-              
-              <div className={styles.rangeContainer}>
-                {/* 1. Šedé pozadí dráhy */}
-                <div className={styles.rangeTrackBg}></div>
+          <div className={styles.formGroup}>
+            <label htmlFor="dulezitost" className={styles.label}>Důležitost</label>
+            
+            <div className={styles.rangeContainer}>
+              <div className={styles.rangeTrackBg}></div>
 
-                {/* 2. NOVÉ: Modrá výplň (Progress bar) */}
-                <div 
-                  className={styles.rangeTrackFill} 
-                  style={{ width: `${percentage}%` }}
-                ></div>
-                
-                {/* 3. Vizuální kulička s číslem */}
-                <div 
-                  className={styles.rangeThumbCustom}
-                  style={{ left: `${percentage}%` }}
-                >
-                  {importance}
-                </div>
+              <div 
+                className={styles.rangeTrackFill} 
+                style={{ width: `${percentage}%` }}
+              ></div>
+              
+              <div 
+                className={styles.rangeThumbCustom}
+                style={{ left: `${percentage}%` }}
+              >
+                {importance}
+              </div>
 
               <input 
                 type="range" 
@@ -113,25 +113,23 @@ export default function NovaAnketa() {
 
           <hr className={styles.divider} />
 
-          {/* --- OPAKUJÍCÍ SE ČÁST (Popis a Možnosti) --- */}
-          <div className={styles.scrollableArea}>
+          <div>
             {sections.map((section, index) => (
               <div key={section.id} className={styles.sectionBlock}>
                 
-                {/* Zobrazit číslo otázky, pokud je jich víc */}
                 {sections.length > 1 && (
                   <h4 className={styles.sectionTitle}>Otázka {index + 1}</h4>
                 )}
 
-          <div className={styles.formGroup}>
-            <label htmlFor="popis" className={styles.label}>Popis</label>
-            <textarea 
-              id="popis" 
-              name="description" 
-              className={styles.textareaStyle} 
-              placeholder="xxxxxxxxxxxxx" 
-            />
-          </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor={`popis-${section.id}`} className={styles.label}>Popis</label>
+                  <textarea 
+                    id={`popis-${section.id}`}
+                    name={`description_${section.id}`}
+                    className={styles.textareaStyle} 
+                    placeholder="xxxxxxxxxxxxx" 
+                  />
+                </div>
 
                 <div className={styles.formGroup}>
                   <label className={styles.label}>Možnosti</label>
@@ -156,29 +154,28 @@ export default function NovaAnketa() {
                   </div>
                 </div>
                 
-                {/* Oddělovač mezi sekcemi, pokud to není poslední */}
                 {index < sections.length - 1 && <hr className={styles.sectionDivider} />}
               </div>
             ))}
           </div>
+        </div>
 
-          {/* --- PATIČKA S TLAČÍTKY --- */}
-          <div className={styles.footerActions}>
-            <button 
-              type="button" 
-              onClick={handleAddSection} 
-              className={styles.addBtn}
-            >
-              Přidat
-            </button>
+        {/* 4. Patička */}
+        <div className={styles.footerActions}>
+          <button 
+            type="button" 
+            onClick={handleAddSection} 
+            className={styles.addBtn}
+          >
+            Přidat
+          </button>
 
-            <button type="submit" className={styles.submitBtn}>
-              Odeslat
-            </button>
-          </div>
+          <button type="submit" className={styles.submitBtn}>
+            Odeslat
+          </button>
+        </div>
 
-        </form>
-      </div>
+      </form>
     </div>
   );
 }
