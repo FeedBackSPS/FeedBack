@@ -10,8 +10,24 @@ export function getData() {
   const result = sql(`SELECT * from Questionnaires`);
   return result;
 }
-export async function sendAnswersToDB(answers) {
-  const result = answers;
-  console.log("Answers to be sent to DB:", answers);
+export async function sendAnswersToDB(username, answers) {
+  console.log("answers in sendAnswersToDB:", { answers });
+  console.log(answers[1]);
+
+  let columns = "A1";
+  for (let i = 1; i < answers.length; i++) {
+    columns += `, A${i + 1}`;
+  }
+
+  let answerValues = `'${answers[0]}'`;
+  for (let i = 1; i < answers.length; i++) {
+    answerValues += `, '${answers[i]}'`;
+  }
+
+  const result = sql(
+    `INSERT INTO Answers_1 (username, ${columns}) VALUES ('${username}', ${answerValues})`
+  );
+
+  console.log("Result to be sent to DB:", result);
   return result;
 }

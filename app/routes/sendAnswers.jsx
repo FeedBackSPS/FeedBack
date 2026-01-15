@@ -1,5 +1,6 @@
 import { redirect } from "react-router";
 import { sendAnswersToDB } from "../api/db.server";
+import { storage } from "../api/auth";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -12,7 +13,10 @@ export async function action({ request }) {
     console.log(`Answer for q${i}:`, formData.get(`q${i}`));
   }
 
-  return (sendAnswersToDB(answers, formID), redirect("/"));
+  const session = await storage.getSession(request.headers.get("Cookie"));
+  const username = session.get("username");
+
+  return (sendAnswersToDB(username, answers), redirect("/"));
 }
 
 export default function SendAnswers() {
