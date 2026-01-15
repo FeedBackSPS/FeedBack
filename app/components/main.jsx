@@ -2,11 +2,16 @@ import { useState } from "react";
 import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
+import NovaAnketa from "./novaAnketa";
+import NewQuestionnaire from "./newQuestionnaire";
 
 export default function Main({ questionnaires }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openQuestionnaire, setOpenQuestionnaire] = useState(null);
 
+  // Stav pro otevření/zavření modálního okna
+  const [showNovaAnketa, setShowNovaAnketa] = useState(false);
+  const [showNewQuestionnaire, setShowNewQuestionnaire] = useState(false);
   console.log(questionnaires, "questionnaires v main");
 
   // questionnaires[0].questions = JSON.parse(questionnaires[0].questions);
@@ -110,7 +115,9 @@ export default function Main({ questionnaires }) {
   // ];
 
   return (
-    <main className=" ">
+    <main className="relative">
+      {" "}
+      {/* Přidáno relative, pro jistotu */}
       <div>
         <div className="flex justify-center items-center gap-2 mt-20 mb-4">
           <img className="w-12" src="spstrutnov_symbol_RGB.svg" alt="logo" />
@@ -122,23 +129,33 @@ export default function Main({ questionnaires }) {
           Podělte se s námi o své poznatky a dojmy
         </p>
       </div>
-
       <section className="flex flex-row gap-10 justify-center mt-16 mb-16 flex-wrap">
-        {/* Article 1 */}
-        <article className="bg-gray flex flex-col border-[#374E88] border-[6px]  bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
-          <header className="flex flex-row justify-between items-center gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
-            <h2 className="text-3xl text-[#374E88] font-bold">Ankety</h2>
-            <div className="flex flex-row gap-3 ">
-              {article1Dropdowns.map((dropdown) => (
-                <Dropdown
-                  key={dropdown.id}
-                  id={dropdown.id}
-                  title={dropdown.title}
-                  items={dropdown.items}
-                  openDropdown={openDropdown}
-                  setOpenDropdown={setOpenDropdown}
-                />
-              ))}
+        {/* Article 1 - Ankety */}
+        <article className="bg-gray flex flex-col border-[#374E88] border-[6px] bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
+          <header className="flex flex-row justify-between items-start gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
+            <h2 className="text-3xl text-[#374E88] font-bold mt-1">Ankety</h2>
+
+            <div className="flex flex-col items-end gap-3">
+              <div className="flex flex-row gap-3">
+                {article1Dropdowns.map((dropdown) => (
+                  <Dropdown
+                    key={dropdown.id}
+                    id={dropdown.id}
+                    title={dropdown.title}
+                    items={dropdown.items}
+                    openDropdown={openDropdown}
+                    setOpenDropdown={setOpenDropdown}
+                  />
+                ))}
+              </div>
+
+              {/* Tlačítko pro otevření Nové Ankety */}
+              <button
+                className="bg-white text-gray-500 hover:text-[#374E88] font-bold py-1.5 px-5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm whitespace-nowrap"
+                onClick={() => setShowNovaAnketa(true)}
+              >
+                Nová anketa +
+              </button>
             </div>
           </header>
           {questionnaires.map((data, index) => (
@@ -155,21 +172,33 @@ export default function Main({ questionnaires }) {
           ))}
         </article>
 
-        {/* Article 2 */}
-        <article className="bg-gray flex flex-col border-[#374E88] border-[6px]  bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
-          <header className="flex flex-row justify-between items-center gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
-            <h2 className="text-3xl text-[#374E88] font-bold">Dotazníky</h2>
-            <div className="flex flex-row gap-3 items-center">
-              {article2Dropdowns.map((dropdown) => (
-                <Dropdown
-                  key={dropdown.id}
-                  id={dropdown.id}
-                  title={dropdown.title}
-                  items={dropdown.items}
-                  openDropdown={openDropdown}
-                  setOpenDropdown={setOpenDropdown}
-                />
-              ))}
+        {/* Article 2 - Dotazníky */}
+        <article className="bg-gray flex flex-col border-[#374E88] border-[6px] bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
+          <header className="flex flex-row justify-between items-start gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
+            <h2 className="text-3xl text-[#374E88] font-bold mt-1">
+              Dotazníky
+            </h2>
+
+            <div className="flex flex-col items-end gap-3">
+              <div className="flex flex-row gap-3 items-center">
+                {article2Dropdowns.map((dropdown) => (
+                  <Dropdown
+                    key={dropdown.id}
+                    id={dropdown.id}
+                    title={dropdown.title}
+                    items={dropdown.items}
+                    openDropdown={openDropdown}
+                    setOpenDropdown={setOpenDropdown}
+                  />
+                ))}
+              </div>
+
+              <button
+                className="bg-white text-gray-500 hover:text-[#374E88] font-bold py-1.5 px-5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm whitespace-nowrap"
+                onClick={() => setShowNewQuestionnaire(true)}
+              >
+                Nový dotazník +
+              </button>
             </div>
           </header>
           {questionnaires.map((data, index) => (
@@ -186,10 +215,45 @@ export default function Main({ questionnaires }) {
           ))}
         </article>
       </section>
+      {/* Zobrazení již existujícího detailu dotazníku */}
       <OpenedQuestionnaire
         questionnaire={openQuestionnaire}
         onClose={() => setOpenQuestionnaire(null)}
       />
+      {/* --- MODÁLNÍ OKNO PRO NOVOU ANKETU --- */}
+      {showNovaAnketa && (
+        <div
+          // 1. Tady říkáme: Když klikneš na toto šedé pozadí, nastav stav na false (zavři to)
+          className="fixed inset-0 bg-black/50 z-[100] flex justify-center items-center backdrop-blur-sm"
+          onClick={() => setShowNovaAnketa(false)}
+        >
+          {/* 2. Tady je důležité stopPropagation: Když klikneš DOVNITŘ okna, akce se zastaví a neprobublá nahoru */}
+          {/* PŘIDÁNY TŘÍDY: w-full (plná šířka), max-w-lg (maximální šířka), p-4 (vnitřní odsazení), rounded-2xl (zaoblené rohy) */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-lg p-4 rounded-2xl transform transition-all"
+          >
+            <NovaAnketa />
+          </div>
+        </div>
+      )}
+      {/* --- MODÁLNÍ OKNO PRO NOVOU ANKETU --- */}
+      {showNewQuestionnaire && (
+        <div
+          // 1. Tady říkáme: Když klikneš na toto šedé pozadí, nastav stav na false (zavři to)
+          className="fixed inset-0 bg-black/50 z-[100] flex justify-center items-center backdrop-blur-sm"
+          onClick={() => setShowNewQuestionnaire(false)}
+        >
+          {/* 2. Tady je důležité stopPropagation: Když klikneš DOVNITŘ okna, akce se zastaví a neprobublá nahoru */}
+          {/* PŘIDÁNY TŘÍDY: w-full (plná šířka), max-w-lg (maximální šířka), p-4 (vnitřní odsazení), rounded-2xl (zaoblené rohy) */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-lg p-4 rounded-2xl transform transition-all"
+          >
+            <NewQuestionnaire />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
