@@ -2,7 +2,6 @@ import { useState } from "react";
 import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
-import NovaAnketa from "./novaAnketa";
 
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -92,6 +91,7 @@ export default function Main() {
       </div>
 
       <section className="flex flex-row gap-10 justify-center mt-16 mb-16 flex-wrap">
+<<<<<<< HEAD
         {/* Article 1 - Ankety */}
         <article className="bg-gray flex flex-col border-[#374E88] border-[6px] bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
           <header className="flex flex-row justify-between items-start gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
@@ -118,6 +118,23 @@ export default function Main() {
               >
                 Nová anketa +
               </button>
+=======
+        {/* Article 1 */}
+        <article className="bg-gray flex flex-col border-[#374E88] border-[6px]  bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
+          <header className="flex flex-row justify-between items-center gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
+            <h2 className="text-3xl text-[#374E88] font-bold">Ankety</h2>
+            <div className="flex flex-row gap-3 ">
+              {article1Dropdowns.map((dropdown) => (
+                <Dropdown
+                  key={dropdown.id}
+                  id={dropdown.id}
+                  title={dropdown.title}
+                  items={dropdown.items}
+                  openDropdown={openDropdown}
+                  setOpenDropdown={setOpenDropdown}
+                />
+              ))}
+>>>>>>> ad0ad76e2497db9954ca9d64d321ff9d9cbcff16
             </div>
           </header>
           {questionnaires.map((data, index) => (

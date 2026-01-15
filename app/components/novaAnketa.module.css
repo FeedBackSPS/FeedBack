@@ -169,6 +169,7 @@
   transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 
+<<<<<<< HEAD
 /* Efekt: Když uživatel najede na slider nebo táhne, kulička se zvětší */
 .rangeContainer:hover .rangeThumbCustom,
 .rangeInput:active + .rangeThumbCustom {
@@ -254,4 +255,8 @@
 .addBtn:hover, .submitBtn:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+=======
+.submitBtn:hover {
+  opacity: 0.9;
+>>>>>>> ad0ad76e2497db9954ca9d64d321ff9d9cbcff16
 }
