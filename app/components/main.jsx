@@ -3,9 +3,20 @@ import Dropdown from "./dropDownMenu";
 import Questionnaire from "./questionnaire";
 import OpenedQuestionnaire from "./openedQuestionnaire";
 
-export default function Main() {
+export default function Main({ questionnaires }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openQuestionnaire, setOpenQuestionnaire] = useState(null);
+
+  console.log(questionnaires, "questionnaires v main");
+
+  // questionnaires[0].questions = JSON.parse(questionnaires[0].questions);
+  questionnaires.forEach((q) => {
+    if (typeof q.questions === "string") {
+      q.questions = JSON.parse(q.questions);
+    }
+  });
+
+  console.dir(questionnaires, { depth: null, colors: true });
 
   const article1Dropdowns = [
     { id: "a1-stari", title: "Stáří", items: ["0-10", "11-20", "21+"] },
@@ -25,78 +36,78 @@ export default function Main() {
     },
   ];
 
-  const questionnaires = [
-    {
-      title: "Spokojenost s výukou",
-      author: "Jan Novák",
-      createdAt: "2024-01-15",
-      isActive: true,
-      type: "anketa",
-      questions: [
-        {
-          text: "Jak jste spokojen/a s výukou?",
-          type: "scale",
-          min: 0,
-          max: 10,
-        },
-        {
-          text: "Jak jste spokojen/a s výukou?",
-          type: "scale",
-          min: 0,
-          max: 5,
-        },
-        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
-      ],
-    },
-    {
-      title: "Hodnocení školních služeb",
-      author: "Petr Svoboda",
-      createdAt: "2024-02-10",
-      isActive: false,
-      type: "dotaznik",
-      questions: [
-        {
-          text: "Jak jste spokojen/a s výukou?",
-          type: "scale",
-          min: 0,
-          max: 10,
-        },
-        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
-      ],
-    },
-    {
-      title: "Hodnocení školních služeb",
-      author: "Petr Svoboda",
-      createdAt: "2024-02-10",
-      isActive: false,
-      type: "anketa",
-      questions: [
-        {
-          text: "Jak jste spokojen/a s výukou?",
-          type: "scale",
-          min: 0,
-          max: 10,
-        },
-        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
-      ],
-    },
-    {
-      title: "Hodnocení školních služeb",
-      author: "Petr Svoboda",
-      createdAt: "2024-02-10",
-      isActive: true,
-      type: "dotaznik",
-      questions: [
-        {
-          text: "Jak jste spokojen/a s výukou?",
-          type: "scale",
-          min: 0,
-          max: 10,
-        },
-        { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
-      ],
-    },
-  ];
+  // const questionnaires = [
+  //   {
+  //     title: "Spokojenost s výukou",
+  //     author: "Jan Novák",
+  //     createdAt: "2024-01-15",
+  //     isActive: true,
+  //     type: "anketa",
+  //     questions: [
+  //       {
+  //         text: "Jak jste spokojen/a s výukou?",
+  //         type: "scale",
+  //         min: 0,
+  //         max: 10,
+  //       },
+  //       {
+  //         text: "Jak jste spokojen/a s výukou?",
+  //         type: "scale",
+  //         min: 0,
+  //         max: 5,
+  //       },
+  //       { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+  //     ],
+  //   },
+  //   {
+  //     title: "Hodnocení školních služeb",
+  //     author: "Petr Svoboda",
+  //     createdAt: "2024-02-10",
+  //     isActive: false,
+  //     type: "dotaznik",
+  //     questions: [
+  //       {
+  //         text: "Jak jste spokojen/a s výukou?",
+  //         type: "scale",
+  //         min: 0,
+  //         max: 10,
+  //       },
+  //       { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+  //     ],
+  //   },
+  //   {
+  //     title: "Hodnocení školních služeb",
+  //     author: "Petr Svoboda",
+  //     createdAt: "2024-02-10",
+  //     isActive: false,
+  //     type: "anketa",
+  //     questions: [
+  //       {
+  //         text: "Jak jste spokojen/a s výukou?",
+  //         type: "scale",
+  //         min: 0,
+  //         max: 10,
+  //       },
+  //       { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+  //     ],
+  //   },
+  //   {
+  //     title: "Hodnocení školních služeb",
+  //     author: "Petr Svoboda",
+  //     createdAt: "2024-02-10",
+  //     isActive: true,
+  //     type: "dotaznik",
+  //     questions: [
+  //    {
+  //      text: "Jak jste spokojen/a s výukou?",
+  //      type: "scale",
+  //      min: 0,
+  //     max: 10,
+  //    },
+  //    { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
+  //  ],
+  //   },
+  // ];
 
   return (
     <main className=" ">

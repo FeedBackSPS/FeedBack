@@ -1,13 +1,24 @@
 import { useState } from "react";
-import { Form } from "react-router";
+import { Form, useNavigation } from "react-router";
 
 export default function OpenedQuestionnaire({ onClose, questionnaire }) {
   console.log("OpenedQuestionnaire rendered with:", questionnaire);
+
   if (!questionnaire) return null;
 
   const [hodnoty, setHodnoty] = useState(
     questionnaire.questions.map((q) => q.min)
   );
+
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === "submitting";
+
+  // zavři modal po submitu
+  if (isSubmitting) {
+    // počkej klidně i microtick, aby se submit stihl
+    setTimeout(() => onClose(), 0);
+  }
 
   // rendruje to podle typu otazky
   const renderQuestion = (question, index) => {
@@ -21,8 +32,8 @@ export default function OpenedQuestionnaire({ onClose, questionnaire }) {
             </label>
             <input
               type="range"
-              id={`${index}`}
-              name={`${index}`}
+              id={`q${index}`}
+              name={`q${index}`}
               min={question.min || 0}
               max={question.max || 5}
               className="border border-gray-300 rounded-md "
@@ -99,12 +110,24 @@ export default function OpenedQuestionnaire({ onClose, questionnaire }) {
         </div>
 
         <button
+          type="submit"
           className="px-6 py-3 rounded-xl text-white font-bold text-xl bg-[#374E88] cursor-pointer ml-auto"
-          onClick={onClose}
         >
           Odeslat
         </button>
       </article>
+      <input
+        type="number"
+        hidden
+        name="questionCount"
+        value={questionnaire.questions.length}
+      />
+      <input
+        type="number"
+        hidden
+        name="formID"
+        value={questionnaire.ID_Questionnaire}
+      />
     </Form>
   );
 }
