@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form } from "react-router";
 
 export default function NewQuestionnaire() {
   const [questions, setQuestions] = useState([
@@ -8,6 +9,7 @@ export default function NewQuestionnaire() {
       type: "text",
       options: [""],
       importance: 4,
+      scaleType: "1-5",
     },
   ]);
 
@@ -42,6 +44,7 @@ export default function NewQuestionnaire() {
         type: "text",
         options: [""],
         importance: 4,
+        scaleType: "1-5",
       },
     ]);
   };
@@ -57,8 +60,8 @@ export default function NewQuestionnaire() {
         <h2 className="text-3xl font-bold text-blue-900 text-center mb-6">
           Nový dotazník
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="border-2 border-dashed border-purple-300 rounded-xl p-4">
+        <Form onSubmit={handleSubmit} className="space-y-6">
+          <div>
             {questions.map((q, idx) => (
               <div key={q.id} className="mb-8">
                 <label className="block font-bold text-lg mb-2">
@@ -73,44 +76,92 @@ export default function NewQuestionnaire() {
                 />
                 <div className="border-b border-gray-400 mb-2" />
                 <div className="grid grid-cols-2 gap-2 mb-2">
-                  <button
-                    type="button"
-                    className={`px-4 py-2 rounded-md font-semibold ${q.type === "text" ? "bg-blue-800 text-white" : "bg-gray-200 text-gray-600"}`}
-                    onClick={() => handleChange(idx, "type", "text")}
+                  <label
+                    className={`px-4 py-2 rounded-md font-semibold cursor-pointer text-center ${q.type === "text" ? "bg-[#374E88] text-white" : "bg-gray-200 text-gray-600"}`}
                   >
+                    <input
+                      type="radio"
+                      name={`type-${q.id}`}
+                      value="text"
+                      checked={q.type === "text"}
+                      onChange={(e) =>
+                        handleChange(idx, "type", e.target.value)
+                      }
+                      className="hidden"
+                    />
                     Textové pole
-                  </button>
-                  <button
-                    type="button"
-                    className={`px-4 py-2 rounded-md font-semibold ${q.type === "scale" ? "bg-blue-800 text-white" : "bg-gray-200 text-gray-600"}`}
-                    onClick={() => handleChange(idx, "type", "scale")}
+                  </label>
+                  <label
+                    className={`px-4 py-2 rounded-md font-semibold cursor-pointer text-center ${q.type === "scale" ? "bg-[#374E88] text-white" : "bg-gray-200 text-gray-600"}`}
                   >
+                    <input
+                      type="radio"
+                      name={`type-${q.id}`}
+                      value="scale"
+                      checked={q.type === "scale"}
+                      onChange={(e) =>
+                        handleChange(idx, "type", e.target.value)
+                      }
+                      className="hidden"
+                    />
                     Škála
-                  </button>
-                  <button
-                    type="button"
-                    className={`px-4 py-2 rounded-md font-semibold ${q.type === "yesno" ? "bg-blue-800 text-white" : "bg-gray-200 text-gray-600"}`}
-                    onClick={() => handleChange(idx, "type", "yesno")}
+                  </label>
+                  <label
+                    className={`px-4 py-2 rounded-md font-semibold cursor-pointer text-center ${q.type === "yesno" ? "bg-[#374E88] text-white" : "bg-gray-200 text-gray-600"}`}
                   >
+                    <input
+                      type="radio"
+                      name={`type-${q.id}`}
+                      value="yesno"
+                      checked={q.type === "yesno"}
+                      onChange={(e) =>
+                        handleChange(idx, "type", e.target.value)
+                      }
+                      className="hidden"
+                    />
                     Ano/Ne
-                  </button>
+                  </label>
+                  {q.type === "scale" && (
+                    <div className="flex gap-2">
+                      <label
+                        className={`flex-1 px-2 py-1 rounded font-semibold cursor-pointer text-center flex items-center justify-center ${q.scaleType === "1-5" ? "bg-[#374E88] text-white" : "bg-gray-200 text-gray-600"}`}
+                      >
+                        <input
+                          type="radio"
+                          name={`scaleType-${q.id}`}
+                          value="1-5"
+                          checked={q.scaleType === "1-5"}
+                          onChange={(e) =>
+                            handleChange(idx, "scaleType", e.target.value)
+                          }
+                          className="hidden"
+                        />
+                        1 - 5
+                      </label>
+                      <label
+                        className={`flex-1 px-2 py-1 rounded font-semibold cursor-pointer text-center flex items-center justify-center ${q.scaleType === "options" ? "bg-[#374E88] text-white" : "bg-gray-200 text-gray-600"}`}
+                      >
+                        <input
+                          type="radio"
+                          name={`scaleType-${q.id}`}
+                          value="options"
+                          checked={q.scaleType === "options"}
+                          onChange={(e) =>
+                            handleChange(idx, "scaleType", e.target.value)
+                          }
+                          className="hidden"
+                        />
+                        Možnosti
+                      </label>
+                    </div>
+                  )}
                 </div>
-                {q.type === "scale" && (
-                  <div className="flex gap-2 items-center mb-2">
-                    <span className="bg-gray-200 px-2 py-1 rounded font-semibold">
-                      1 - 5
-                    </span>
-                    <span className="bg-gray-200 px-2 py-1 rounded font-semibold">
-                      Možnosti
-                    </span>
-                  </div>
-                )}
               </div>
             ))}
             <button
               type="button"
               onClick={addQuestion}
-              className="w-full mt-2 py-2 bg-purple-500 text-white rounded font-bold"
+              className="w-full mt-2 py-2 bg-[#374E88] text-white rounded font-bold"
             >
               Přidat další otázku
             </button>
@@ -118,12 +169,12 @@ export default function NewQuestionnaire() {
           <div className="flex justify-center mt-6">
             <button
               type="submit"
-              className="px-8 py-3 bg-blue-800 text-white rounded-full text-lg font-bold shadow"
+              className="px-6 py-3 rounded-xl text-white font-bold text-xl bg-[#374E88] cursor-pointer ml-auto"
             >
               Odeslat
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
