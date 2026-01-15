@@ -6,7 +6,7 @@ import OpenedQuestionnaire from "./openedQuestionnaire";
 export default function Main() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openQuestionnaire, setOpenQuestionnaire] = useState(null);
-  
+
   // Stav pro otevření/zavření modálního okna
   const [showNovaAnketa, setShowNovaAnketa] = useState(false);
 
@@ -36,8 +36,18 @@ export default function Main() {
       isActive: true,
       type: "anketa",
       questions: [
-        { text: "Jak jste spokojen/a s výukou?", type: "scale", min: 0, max: 10 },
-        { text: "Jak jste spokojen/a s výukou?", type: "scale", min: 0, max: 5 },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 5,
+        },
         { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
       ],
     },
@@ -48,7 +58,12 @@ export default function Main() {
       isActive: false,
       type: "dotaznik",
       questions: [
-        { text: "Jak jste spokojen/a s výukou?", type: "scale", min: 0, max: 10 },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
         { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
       ],
     },
@@ -59,7 +74,12 @@ export default function Main() {
       isActive: false,
       type: "anketa",
       questions: [
-        { text: "Jak jste spokojen/a s výukou?", type: "scale", min: 0, max: 10 },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
         { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
       ],
     },
@@ -70,14 +90,21 @@ export default function Main() {
       isActive: true,
       type: "dotaznik",
       questions: [
-        { text: "Jak jste spokojen/a s výukou?", type: "scale", min: 0, max: 10 },
+        {
+          text: "Jak jste spokojen/a s výukou?",
+          type: "scale",
+          min: 0,
+          max: 10,
+        },
         { text: "Doporučil/a byste náš kurz ostatním?", type: "text" },
       ],
     },
   ];
 
   return (
-    <main className="relative"> {/* Přidáno relative, pro jistotu */}
+    <main className="relative">
+      {" "}
+      {/* Přidáno relative, pro jistotu */}
       <div>
         <div className="flex justify-center items-center gap-2 mt-20 mb-4">
           <img className="w-12" src="spstrutnov_symbol_RGB.svg" alt="logo" />
@@ -89,9 +116,7 @@ export default function Main() {
           Podělte se s námi o své poznatky a dojmy
         </p>
       </div>
-
       <section className="flex flex-row gap-10 justify-center mt-16 mb-16 flex-wrap">
-<<<<<<< HEAD
         {/* Article 1 - Ankety */}
         <article className="bg-gray flex flex-col border-[#374E88] border-[6px] bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
           <header className="flex flex-row justify-between items-start gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
@@ -118,23 +143,6 @@ export default function Main() {
               >
                 Nová anketa +
               </button>
-=======
-        {/* Article 1 */}
-        <article className="bg-gray flex flex-col border-[#374E88] border-[6px]  bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
-          <header className="flex flex-row justify-between items-center gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
-            <h2 className="text-3xl text-[#374E88] font-bold">Ankety</h2>
-            <div className="flex flex-row gap-3 ">
-              {article1Dropdowns.map((dropdown) => (
-                <Dropdown
-                  key={dropdown.id}
-                  id={dropdown.id}
-                  title={dropdown.title}
-                  items={dropdown.items}
-                  openDropdown={openDropdown}
-                  setOpenDropdown={setOpenDropdown}
-                />
-              ))}
->>>>>>> ad0ad76e2497db9954ca9d64d321ff9d9cbcff16
             </div>
           </header>
           {questionnaires.map((data, index) => (
@@ -154,7 +162,9 @@ export default function Main() {
         {/* Article 2 - Dotazníky */}
         <article className="bg-gray flex flex-col border-[#374E88] border-[6px] bg-[#D9D9D9] rounded-2xl h-[50vh] overflow-y-scroll overflow-hidden no-scrollbar">
           <header className="flex flex-row justify-between items-start gap-10 py-6 px-10 border-b-4 border-b-[#374E88]">
-            <h2 className="text-3xl text-[#374E88] font-bold mt-1">Dotazníky</h2>
+            <h2 className="text-3xl text-[#374E88] font-bold mt-1">
+              Dotazníky
+            </h2>
 
             <div className="flex flex-col items-end gap-3">
               <div className="flex flex-row gap-3 items-center">
@@ -192,14 +202,12 @@ export default function Main() {
           ))}
         </article>
       </section>
-
       {/* Zobrazení již existujícího detailu dotazníku */}
       <OpenedQuestionnaire
         questionnaire={openQuestionnaire}
         onClose={() => setOpenQuestionnaire(null)}
       />
-
-    {/* --- MODÁLNÍ OKNO PRO NOVOU ANKETU --- */}
+      {/* --- MODÁLNÍ OKNO PRO NOVOU ANKETU --- */}
       {showNovaAnketa && (
         <div
           // 1. Tady říkáme: Když klikneš na toto šedé pozadí, nastav stav na false (zavři to)
